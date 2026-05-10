@@ -1,0 +1,24 @@
+#!hexa strict
+// tests/test_selftest.hexa — 24-verb spec-presence harness
+
+fn main() {
+    let root = env("HEXA_HEXA_ARTS_ROOT")
+    let mut p = "cli/hexa-arts.hexa"
+    if root.len() > 0 { p = root + "/cli/hexa-arts.hexa" }
+
+    let raw = exec("HEXA_HEXA_ARTS_ROOT=" + root + " hexa run " + p + " selftest 2>&1")
+    if raw.contains("__HEXA_HEXA_ARTS_SELFTEST__ PASS") == false {
+        println("test_selftest: FAIL (sentinel missing)")
+        println(raw.trim())
+        exit(1)
+    }
+    if raw.contains("total verbs: 24") == false {
+        println("test_selftest: FAIL (verb count != 24)")
+        exit(1)
+    }
+    if raw.contains("present:     24/24") == false {
+        println("test_selftest: FAIL (presence != 24/24)")
+        exit(1)
+    }
+    println("test_selftest: PASS — 24/24 arts·culture·games·linguistics·religion verb specs present")
+}

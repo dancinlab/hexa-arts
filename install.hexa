@@ -1,0 +1,51 @@
+// install.hexa — hx build hook for hexa-arts.
+
+fn check_python(min_ver: str) -> bool {
+    let out = exec("python3 --version 2>&1").trim()
+    if !out.contains("Python 3.") {
+        eprintln("[hexa-arts/install] WARN: python3 not found")
+        return false
+    }
+    println("[hexa-arts/install]   python found: " + out)
+    return true
+}
+
+fn run_quick_selftest(root: str) -> bool {
+    let cli = root + "/cli/hexa-arts.hexa"
+    let exists = exec("[ -f \"" + cli + "\" ] && echo y || echo n").trim()
+    if exists != "y" {
+        eprintln("[hexa-arts/install] WARN: cli/hexa-arts.hexa missing — skip selftest")
+        return false
+    }
+    println("[hexa-arts/install] [post] running quick selftest (24-verb spec count)")
+    let cmd = "HEXA_HEXA_ARTS_ROOT=\"" + root + "\" hexa run \"" + cli + "\" selftest 2>&1"
+    let raw = exec(cmd)
+    if raw.contains("__HEXA_HEXA_ARTS_SELFTEST__ PASS") {
+        println("[hexa-arts/install]   selftest PASS — 24/24 verb specs present")
+        return true
+    }
+    eprintln("[hexa-arts/install] WARN: selftest non-PASS")
+    return false
+}
+
+fn main() -> void {
+    let mut root = env("HX_PKG_DIR")
+    if root == "" { root = exec("pwd").trim() }
+    let phase = env("HX_HOOK_PHASE")
+    let mut p = phase
+    if p == "" { p = "both" }
+    println("[hexa-arts/install] HX_PKG_DIR=" + root + " phase=" + p)
+
+    let entry = root + "/cli/hexa-arts.hexa"
+    let entry_ok = exec("[ -f \"" + entry + "\" ] && echo y || echo n").trim()
+    if entry_ok != "y" {
+        eprintln("[hexa-arts/install] ERROR: canonical entry missing: " + entry)
+        exit(1)
+    }
+    println("[hexa-arts/install] canonical entry OK: cli/hexa-arts.hexa")
+
+    if p == "pre" || p == "both" { let _ = check_python("3.10") }
+    if p == "post" || p == "both" { let _ = run_quick_selftest(root) }
+
+    println("[hexa-arts/install] done — hx will generate " + env("HX_BIN_DIR") + "/hexa-arts shim")
+}

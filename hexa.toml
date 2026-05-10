@@ -1,0 +1,79 @@
+# hexa.toml — hexa-arts standalone package manifest
+#
+# 🎨 HEXA-ARTS — n=6 arts·culture·games·linguistics·religion substrate (24-verb rollup)
+# Provenance: extracted from canon@ded52144 on 2026-05-10
+
+[package]
+name = "hexa-arts"
+version = "0.1.0"
+entry = "cli/hexa-arts.hexa"
+description = "🎨 HEXA-ARTS — n=6 arts·culture·games·linguistics·religion substrate (24 verbs from canon migration)"
+license = "MIT"
+authors = ["dancinlab contributors"]
+repository = "https://github.com/dancinlab/hexa-arts"
+homepage = "https://github.com/dancinlab/hexa-arts"
+readme = "README.md"
+keywords = ["hexa-arts", "hexa-family", "n6-lattice", "spec-catalog", "canon-migration"]
+categories = ["spec-catalog", "hexa-family"]
+
+[[bin]]
+name = "hexa-arts"
+path = "cli/hexa-arts.hexa"
+
+[test]
+runner = "hexa"
+files = ["tests/test_selftest.hexa"]
+
+[scripts]
+install = "install.hexa"
+
+# ── Verb manifest (24 verbs) ──────────────
+verb_parent = "."
+[verbs]
+ar_vr_xr            = ["ar-vr-xr"]
+archaeology         = ["archaeology"]
+audio               = ["audio"]
+baduk               = ["baduk"]
+biometrics          = ["biometrics"]
+dance_choreography  = ["dance-choreography"]
+dice_probability    = ["dice-probability"]
+ethnomusicology     = ["ethnomusicology"]
+games_sports        = ["games-sports"]
+hangul_script       = ["hangul-script"]
+library_science     = ["library-science"]
+linguistics         = ["linguistics"]
+mountaineering      = ["mountaineering"]
+music               = ["music"]
+music_mathematics   = ["music-mathematics"]
+numismatics         = ["numismatics"]
+photography         = ["photography"]
+religion            = ["religion"]
+religion_mythology  = ["religion-mythology"]
+social_architecture = ["social-architecture"]
+taekwondo           = ["taekwondo"]
+telecom_linguistics = ["telecom-linguistics"]
+writing_systems     = ["writing-systems"]
+yoga                = ["yoga"]
+
+[dependencies]
+hexa-lang = ">=1.0.0"
+python    = ">=3.10"
+
+[invariants.n6]
+sigma_6           = 12
+tau_6             = 4
+phi_6             = 2
+J_2               = 24
+master_identity   = "σ(6) · φ(6) = n · τ(6) = J₂ = 24"
+verb_count        = 24
+
+[closure]
+verbs_total       = 24
+verbs_wired       = 0
+verbs_spec        = 24
+verdict           = "SPEC_CATALOG_ONLY (n=24 verbs from canon migration)"
+extracted_from    = "canon@ded52144 on 2026-05-10"
+
+[cost]
+mac_local_default = "$0 (markdown spec library + Python stdlib + .hexa CLI)"
+all_verbs         = "$0 (read-only)"
