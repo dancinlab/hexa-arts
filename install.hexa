@@ -18,9 +18,9 @@ fn run_quick_selftest(root: str) -> bool {
         return false
     }
     println("[hexa-arts/install] [post] running quick selftest (24-verb spec count)")
-    let cmd = "HEXA_HEXA_ARTS_ROOT=\"" + root + "\" hexa run \"" + cli + "\" selftest 2>&1"
+    let cmd = "HEXA_ARTS_ROOT=\"" + root + "\" hexa run \"" + cli + "\" selftest 2>&1"
     let raw = exec(cmd)
-    if raw.contains("__HEXA_HEXA_ARTS_SELFTEST__ PASS") {
+    if raw.contains("__HEXA_ARTS_SELFTEST__ PASS") {
         println("[hexa-arts/install]   selftest PASS — 24/24 verb specs present")
         return true
     }

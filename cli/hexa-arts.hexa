@@ -7,10 +7,10 @@
 let VERSION = "0.1.0"
 
 let HOME = env("HOME")
-let HEXA_HEXA_ARTS_ROOT_ENV = env("HEXA_HEXA_ARTS_ROOT")
+let HEXA_ARTS_ROOT_ENV = env("HEXA_ARTS_ROOT")
 
 fn hexa_root() -> str {
-    if HEXA_HEXA_ARTS_ROOT_ENV.len() > 0 { return HEXA_HEXA_ARTS_ROOT_ENV }
+    if HEXA_ARTS_ROOT_ENV.len() > 0 { return HEXA_ARTS_ROOT_ENV }
     let inferred = exec("dirname \"$(dirname \"$0\")\" 2>/dev/null || true").trim()
     if inferred.len() > 0 { return inferred }
     return HOME + "/.hexa-arts"
@@ -135,14 +135,14 @@ fn cmd_selftest(a: [str]) {
     println("  total verbs: " + str(total))
     println("  present:     " + str(ok) + "/" + str(total))
     if ok == total {
-        println("__HEXA_HEXA_ARTS_SELFTEST__ PASS")
+        println("__HEXA_ARTS_SELFTEST__ PASS")
         if json_mode(a) {
             println("{\"hexa_arts\":\"" + VERSION + "\",\"verdict\":\"PASS\",\"present\":" + str(ok) + ",\"total\":" + str(total) + "}")
         }
         _audit("selftest", "", 0)
         return
     }
-    println("__HEXA_HEXA_ARTS_SELFTEST__ FAIL")
+    println("__HEXA_ARTS_SELFTEST__ FAIL")
     for m in miss { println("  missing: " + m) }
     _audit("selftest", "", 1)
     exit(1)
@@ -173,7 +173,7 @@ fn cmd_help() {
     println("  --help, -h       this help")
     println("")
     println("env:")
-    println("  HEXA_HEXA_ARTS_ROOT       override repo root")
+    println("  HEXA_ARTS_ROOT       override repo root")
 }
 
 fn main() {
