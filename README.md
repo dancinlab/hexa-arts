@@ -4,6 +4,7 @@
 > Each verb is a directory of canonical specs migrated from `canon@ded52144`
 > on 2026-05-10. Member of the **HEXA family** (`n=6` invariant lattice).
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20114977.svg)](https://doi.org/10.5281/zenodo.20114977)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Version](https://img.shields.io/badge/version-0.1.0-informational.svg)](hexa.toml)
 [![Verbs](https://img.shields.io/badge/verbs-24-blue.svg)](#verbs)
