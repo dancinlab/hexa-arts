@@ -9,6 +9,14 @@ repository-code: "https://github.com/dancinlab/hexa-arts"
 url: "https://github.com/dancinlab/hexa-arts"
 version: "v0.1.0"
 date-released: "2026-05-10"
+doi: "10.5281/zenodo.20114977"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.20114977"
+    description: "Concept DOI (always resolves to the latest version)"
+  - type: doi
+    value: "10.5281/zenodo.20114978"
+    description: "Version-specific DOI for v0.1.0"
 keywords:
   - hexa-family
   - n6-lattice
