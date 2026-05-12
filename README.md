@@ -20,37 +20,6 @@ extracted from the canon SSOT under unified n=6 invariants.
 
 ---
 
-## Verbs
-
-| Verb | Spec | Status |
-|------|------|--------|
-| `ar_vr_xr` | [ar-vr-xr/ar-vr-xr.md](ar-vr-xr/ar-vr-xr.md) | spec |
-| `archaeology` | [archaeology/archaeology.md](archaeology/archaeology.md) | spec |
-| `audio` | [audio/audio.md](audio/audio.md) | spec |
-| `baduk` | [baduk/baduk.md](baduk/baduk.md) | spec |
-| `biometrics` | [biometrics/biometrics.md](biometrics/biometrics.md) | spec |
-| `dance_choreography` | [dance-choreography/dance-choreography.md](dance-choreography/dance-choreography.md) | spec |
-| `dice_probability` | [dice-probability/dice-probability.md](dice-probability/dice-probability.md) | spec |
-| `ethnomusicology` | [ethnomusicology/ethnomusicology.md](ethnomusicology/ethnomusicology.md) | spec |
-| `games_sports` | [games-sports/games-sports.md](games-sports/games-sports.md) | spec |
-| `hangul_script` | [hangul-script/hangul-script.md](hangul-script/hangul-script.md) | spec |
-| `library_science` | [library-science/library-science.md](library-science/library-science.md) | spec |
-| `linguistics` | [linguistics/linguistics.md](linguistics/linguistics.md) | spec |
-| `mountaineering` | [mountaineering/mountaineering.md](mountaineering/mountaineering.md) | spec |
-| `music` | [music/music.md](music/music.md) | spec |
-| `music_mathematics` | [music-mathematics/music-mathematics.md](music-mathematics/music-mathematics.md) | spec |
-| `numismatics` | [numismatics/numismatics.md](numismatics/numismatics.md) | spec |
-| `photography` | [photography/photography.md](photography/photography.md) | spec |
-| `religion` | [religion/religion.md](religion/religion.md) | spec |
-| `religion_mythology` | [religion-mythology/religion-mythology.md](religion-mythology/religion-mythology.md) | spec |
-| `social_architecture` | [social-architecture/social-architecture.md](social-architecture/social-architecture.md) | spec |
-| `taekwondo` | [taekwondo/taekwondo.md](taekwondo/taekwondo.md) | spec |
-| `telecom_linguistics` | [telecom-linguistics/telecom-linguistics.md](telecom-linguistics/telecom-linguistics.md) | spec |
-| `writing_systems` | [writing-systems/writing-systems.md](writing-systems/writing-systems.md) | spec |
-| `yoga` | [yoga/yoga.md](yoga/yoga.md) | spec |
-
----
-
 ## n=6 master identity
 
 ```
