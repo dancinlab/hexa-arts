@@ -71,22 +71,19 @@ extracted from the canon SSOT under unified n=6 invariants.
 ## Install
 
 ```bash
-hx install hexa-arts --entry cli/hexa-arts.hexa
-hexa-arts --version           # → 0.1.0
-hexa-arts selftest            # → 24/24 verb specs PASS
+# 1. Install hexa-lang (gives you `hexa` + `hx` package manager)
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/dancinlab/hexa-lang/main/install.sh)"
+
+# 2. Install hexa-arts
+hx install hexa-arts
 ```
 
-### CLI subcommands
+## Run
 
 ```bash
-hexa-arts ar_vr_xr
-hexa-arts archaeology
-hexa-arts audio
-hexa-arts baduk
-hexa-arts biometrics
-# ... (19 more verbs — see `hexa-arts list`)
-hexa-arts list
-hexa-arts selftest
+hexa-arts <verb>      # render any of 24 verbs (see `hexa-arts list`)
+hexa-arts list        # verb table
+hexa-arts selftest    # 24-verb spec presence sweep
 ```
 
 ---
