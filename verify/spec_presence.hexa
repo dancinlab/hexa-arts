@@ -1,0 +1,93 @@
+#!hexa strict
+// hexa-arts/verify/spec_presence.hexa — 24-verb spec doc presence verifier.
+//
+// Closure anchor #1 for hexa-arts (spec-first substrate):
+// each of the 24 verbs declared in hexa.toml [verbs] must resolve to a real
+// spec markdown at <subdir>/<filename>. This is the *honest* closure check
+// for a spec-first repo — file presence, not behavioural promise.
+//
+// Per LATTICE_POLICY §1.3: spec-presence is real engineering verification
+// (files exist on disk); not a lattice tautology.
+
+let HOME = env("HOME")
+let HEXA_ARTS_ROOT_ENV = env("HEXA_ARTS_ROOT")
+
+fn shq(s: str) -> str {
+    return "'" + s.replace("'", "'\\''") + "'"
+}
+
+fn _resolve_root() -> str {
+    if HEXA_ARTS_ROOT_ENV.len() > 0 { return HEXA_ARTS_ROOT_ENV }
+    let oldpwd = env("OLDPWD")
+    if oldpwd.len() > 0 {
+        let t = exec("[ -f " + shq(oldpwd) + "/hexa.toml ] && echo y || echo n").trim()
+        if t == "y" { return oldpwd }
+    }
+    let pwd = env("PWD")
+    if pwd.len() > 0 {
+        let t = exec("[ -f " + shq(pwd) + "/hexa.toml ] && echo y || echo n").trim()
+        if t == "y" { return pwd }
+    }
+    return HOME + "/core/hexa-arts"
+}
+
+fn _file_exists(p: str) -> bool {
+    let r = exec("[ -f " + shq(p) + " ] && echo yes || echo no").trim()
+    return r == "yes"
+}
+
+// 24-verb spec registry — must match cli/hexa-arts.hexa VERBS and hexa.toml [verbs].
+let VERBS = [
+    ["ar_vr_xr",            "ar-vr-xr/ar-vr-xr.md"],
+    ["archaeology",         "archaeology/archaeology.md"],
+    ["audio",               "audio/audio.md"],
+    ["baduk",               "baduk/baduk.md"],
+    ["biometrics",          "biometrics/biometrics.md"],
+    ["dance_choreography",  "dance-choreography/dance-choreography.md"],
+    ["dice_probability",    "dice-probability/dice-probability.md"],
+    ["ethnomusicology",     "ethnomusicology/ethnomusicology.md"],
+    ["games_sports",        "games-sports/games-sports.md"],
+    ["hangul_script",       "hangul-script/hangul-script.md"],
+    ["library_science",     "library-science/library-science.md"],
+    ["linguistics",         "linguistics/linguistics.md"],
+    ["mountaineering",      "mountaineering/mountaineering.md"],
+    ["music",               "music/music.md"],
+    ["music_mathematics",   "music-mathematics/music-mathematics.md"],
+    ["numismatics",         "numismatics/numismatics.md"],
+    ["photography",         "photography/photography.md"],
+    ["religion",            "religion/religion.md"],
+    ["religion_mythology",  "religion-mythology/religion-mythology.md"],
+    ["social_architecture", "social-architecture/social-architecture.md"],
+    ["taekwondo",           "taekwondo/taekwondo.md"],
+    ["telecom_linguistics", "telecom-linguistics/telecom-linguistics.md"],
+    ["writing_systems",     "writing-systems/writing-systems.md"],
+    ["yoga",                "yoga/yoga.md"],
+]
+
+fn main() {
+    let root = _resolve_root()
+    println("hexa-arts/verify/spec_presence — 24-verb spec doc presence")
+    println("  root: " + root)
+    println("")
+    let mut ok = 0
+    let mut bad = 0
+    for row in VERBS {
+        let verb = row[0]
+        let rel = row[1]
+        let abs_p = root + "/" + rel
+        if _file_exists(abs_p) {
+            println("  [PASS] " + verb + " -> " + rel)
+            ok = ok + 1
+        } else {
+            println("  [FAIL] " + verb + " -> " + rel + " MISSING (abs: " + abs_p + ")")
+            bad = bad + 1
+        }
+    }
+    println("")
+    println("  spec docs present: " + str(ok) + " / 24")
+    if bad > 0 {
+        println("__HEXA_ARTS_SPEC_PRESENCE__ FAIL")
+        exit(1)
+    }
+    println("__HEXA_ARTS_SPEC_PRESENCE__ PASS")
+}

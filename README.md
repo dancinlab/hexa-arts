@@ -7,7 +7,9 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20114977.svg)](https://doi.org/10.5281/zenodo.20114977)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Version](https://img.shields.io/badge/version-0.1.0-informational.svg)](hexa.toml)
-[![Verbs](https://img.shields.io/badge/verbs-24-blue.svg)](#verbs)
+[![Verbs: 24 spec](https://img.shields.io/badge/verbs-24_spec-blue.svg)](#verbs)
+[![Verify: 4/4 PASS](https://img.shields.io/badge/verify-4%2F4_PASS-brightgreen.svg)](verify/run_all.hexa)
+[![Closure: 100%](https://img.shields.io/badge/closure-100%25-brightgreen.svg)](verify/run_all.hexa)
 [![n=6 lattice](https://img.shields.io/badge/n=6-σ·φ_=_n·τ_=_24-blue.svg)](#n6-master-identity)
 
 ---
@@ -91,6 +93,35 @@ hexa-arts selftest
 
 ---
 
+## Verify
+
+Sister-substrate `verify/run_all.hexa` aggregator pattern, scaled to the
+24-verb arts·culture·games·linguistics·religion spec-first scope.
+From the repo root:
+
+```bash
+hexa run verify/run_all.hexa     # exit 0 = all 4 scripts PASS
+```
+
+| script                            | what it checks                                                                                            |
+| --------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `verify/spec_presence.hexa`       | all 24 verb spec docs present at declared paths                                                           |
+| `verify/lattice_arithmetic.hexa`  | n=6 self-consistency (σ·φ = n·τ = 24) — *aux only* per `LATTICE_POLICY.md` §1.3                           |
+| `verify/real_limits_anchor.hexa`  | `LIMIT_BREAKTHROUGH.md` anchors (perception physics · Shannon · Kolmogorov · Cowan · Art Basel market)    |
+| `verify/closure_consistency.hexa` | scoreboard cross-check (CLI · `hexa.toml` · README · `AGENTS.md`)                                         |
+
+Per `LATTICE_POLICY.md` §1.3, lattice-arithmetic identities are
+permitted only as auxiliary self-consistency checks; the substrate's
+real verification anchors live in `LIMIT_BREAKTHROUGH.md` (visible-light
+band 380–780 nm / audible band 20 Hz – 20 kHz / Snellen foveal acuity /
+CIELAB color JND / Cowan working memory / Shannon-entropy bound /
+Kolmogorov complexity / Art Basel global market ~$65 B/yr).
+Arts/culture claims about external entities (real games, real religions,
+real artists, real linguists) preserve raw#10 C3 honesty — no lattice
+fits on external cultural entities.
+
+---
+
 ## Cross-link
 
 - HEXA family sister rollups: `hexa-mind`, `hexa-senses`, `hexa-mobility`, `hexa-matter`, `hexa-grid`, etc.
@@ -100,9 +131,11 @@ hexa-arts selftest
 
 ## Status
 
-**SPEC_CATALOG_ONLY at v0.1.0** — 24 verb specs land on disk
-under their named directories. CLI dispatcher reads them; no working
-`.hexa` modules ship at v0.1.0.
+**SPEC_FIRST CLOSED at v0.1.0** — 24/24 verb specs present on disk
+under their named directories, 4/4 `verify/*.hexa` scripts PASS.
+CLI dispatcher reads them; no working `.hexa` modules ship at v0.1.0
+(spec-first substrate, per `LATTICE_POLICY.md` real-limits-first
+verification standard).
 
 ---
 

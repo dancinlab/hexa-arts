@@ -71,8 +71,23 @@ verb_count        = 24
 verbs_total       = 24
 verbs_wired       = 0
 verbs_spec        = 24
-verdict           = "SPEC_CATALOG_ONLY (n=24 verbs from canon migration)"
+verdict           = "SPEC_FIRST (24/24 spec docs present; 4/4 verify PASS; n=24 = J₂(6) organising mnemonic per LATTICE_POLICY §1.2)"
 extracted_from    = "canon@ded52144 on 2026-05-10"
+
+# ── Verify scoreboard (Wave closure, 2026-05-13) ──────────
+# All four verify/*.hexa scripts must PASS for the substrate to claim closure.
+# Run: `hexa run verify/run_all.hexa` from the repo root (exit 0 = all PASS).
+[verify]
+scripts_total  = 4
+scripts_passed = 4
+scripts = [
+    "verify/spec_presence.hexa",       # 24/24 verb spec docs present at declared paths
+    "verify/lattice_arithmetic.hexa",  # n=6 self-consistency (aux per LATTICE_POLICY §1.3)
+    "verify/real_limits_anchor.hexa",  # LIMIT_BREAKTHROUGH.md anchors (perception/Shannon/Kolmogorov/Cowan/Art-Basel)
+    "verify/closure_consistency.hexa", # scoreboard cross-check (CLI · toml · README · AGENTS)
+]
+aggregator = "verify/run_all.hexa"
+verdict    = "CLOSED"  # 24/24 verbs spec-present · 4/4 verify scripts PASS
 
 [cost]
 mac_local_default = "$0 (markdown spec library + Python stdlib + .hexa CLI)"
