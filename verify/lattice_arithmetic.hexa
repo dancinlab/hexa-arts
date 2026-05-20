@@ -27,7 +27,6 @@ fn main() {
     println("  policy: LATTICE_POLICY §1.3 rule 1 — aux check; never sole verification")
     println("  policy: LATTICE_POLICY §1.3 rule 4 — NEVER applied to external entities")
     println("          (real games, real religions, real artists, real linguists,")
-    println("           real cultures use their own descriptors — raw#10 C3)")
     println("")
 
     let n = 6
